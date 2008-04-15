@@ -3,7 +3,7 @@ package MT::Plugin::OMV::YahooKeywordSuggest;
 #   YahooKeywordSuggest - Suggest the suitable keywords with Yahoo! web service
 #   @see http://developer.yahoo.co.jp/jlp/MAService/V1/parse.html
 #           Copyright (c) 2008 Piroli YUKARINOMIYA (MagicVox)
-#           @see http://www.magicvox.net/archive/2008/04141429/
+#           @see http://www.magicvox.net/archive/2008/04151715/
 
 use strict;
 use MT;
@@ -34,7 +34,7 @@ my $plugin = __PACKAGE__->new({
     key => $MYNAME,
     author_name => 'Piroli YUKARINOMIYA',
     author_link => 'http://www.magicvox.net/',
-    doc_link => 'http://www.magicvox.net/archive/2008/04141429/',
+    doc_link => 'http://www.magicvox.net/archive/2008/04151715/',
     description => <<PERLHEREDOC,
 Suggest the suitable keywords of the entry with the morphological analysis of Yahoo! web service
 PERLHEREDOC
@@ -84,7 +84,7 @@ MT::Entry->add_callback( 'pre_save', 9, $plugin, \&_cb_object_pre_save );
 MT::Page->add_callback( 'pre_save', 9, $plugin, \&_cb_object_pre_save );
 sub _cb_object_pre_save {
     my( $cb, $obj ) = @_;
-    $obj->keywords || '' eq TRIGGER_PHRASE
+    $obj->keywords eq TRIGGER_PHRASE
         or return;# do nothing
 
     ### Yahoo! application ID
